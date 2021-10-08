@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>none</groupId>
+	<artifactId>java-memory-playground</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Program to play with java memory allocation and GC</name>
+	<description>The program allows allocate, deallocate and GC to check how memory works. The idea is to setup Xms and Xmx and start allocating large objects in memory and see how GC works.</description>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+</project>
