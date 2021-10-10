@@ -37,10 +37,10 @@ public class MemoryPlaygroundApp {
 
             if (command.equalsIgnoreCase("test")) {
                 objManager.alloc("400m", 1, 400);
-                Thread.sleep(5000);
+                Thread.sleep(2000);
                 objManager.free("400m");
-                objManager.alloc("400x1m", 400, 1);
-                objManager.free("400x1m");
+                objManager.alloc("40x10m", 400, 1);
+                objManager.free("40x10m");
             } else if (command.equalsIgnoreCase("alloc")) {
                 if (args.length >= 4) {
                     String prefix = args[1];
@@ -74,7 +74,22 @@ public class MemoryPlaygroundApp {
         System.out.printf("Wrong number of arguments%n");
     }
 
+    final Runnable allocAndFreeInBackground = () -> {
+        while (true) {
+            objManager.alloc("background-1m", 1, 1);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+            objManager.free("background-1m");
+        }
+    };
+
     public void run() throws IOException, InterruptedException {
+
+        new Thread(allocAndFreeInBackground, "Background alloc/free").start();
+
         while (true) {
             String commandLine = inputCommand();
             processCommand(commandLine);

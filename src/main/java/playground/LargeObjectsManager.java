@@ -17,10 +17,16 @@ public class LargeObjectsManager {
         for (int i = 1; i <= n; i++) {
             newList.add(new LargeObject(prefix + "-" + i, mb));
             try {
-                Thread.sleep(200);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
 
         List<LargeObject> list = mapOfObjects.get(prefix);
